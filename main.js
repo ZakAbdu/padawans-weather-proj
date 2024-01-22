@@ -19,6 +19,9 @@ const getWeather = async (city) => {
     document.querySelector('.humidity').innerHTML = data.main.humidity + '%';
     document.querySelector('.wind').innerHTML = data.wind.speed + ' mph';
 
+    let tempCheck = document.querySelector('.temp').innerHTML
+    let tempCheck2 = (tempCheck.slice(0, -2))
+
     if (data.weather[0].main == 'Clouds') {
         weatherIcon.src = 'images/clouds.png'
     } else if (data.weather[0].main == 'Rain') {
@@ -28,7 +31,7 @@ const getWeather = async (city) => {
         weatherIcon.src = 'images/snowflake.png'
     } 
     else if (data.weather[0].main == 'Clear') {
-        if (document.querySelector('.temp').value > 30) {
+        if (tempCheck2 > 40) {
             weatherIcon.src = 'images/sunny-day.png'
         }
         else {
